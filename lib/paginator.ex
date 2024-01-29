@@ -356,7 +356,7 @@ defmodule Paginator do
       |> exclude(:preload)
       |> exclude(:select)
       |> exclude(:order_by)
-      |> Repo.aggregate(:count, repo_opts)
+      |> repo.aggregate(:count, repo_opts)
 
     {result, false}
   end
@@ -376,7 +376,7 @@ defmodule Paginator do
       |> exclude(:select)
       |> exclude(:order_by)
       |> limit(^(total_count_limit + 1))
-      |> Repo.aggregate(:count, repo_opts)
+      |> repo.aggregate(:count, repo_opts)
 
     {
       Enum.min([result, total_count_limit]),
